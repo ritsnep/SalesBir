@@ -1,0 +1,55 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Customers</h2>
+    <a href="{% url 'customer-create' %}" class="btn btn-primary mb-3">Add Customer</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in object_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'customer-detail' customer.pk %}">{{ customer.name }}</a></td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>
+                        <a href="{% url 'customer-update' customer.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                        <a href="{% url 'customer-delete' customer.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% comment %} {% extends 'base_generic.html' %}
+
+{% block content %}
+<h2>Customers</h2>
+<a href="{% url 'customer-create' %}" class="btn btn-primary">Add Customer</a>
+<ul class="list-group">
+    {% for customer in object_list %}
+        <li class="list-group-item list-group-item-secondary">
+            <a href="{% url 'customer-detail' customer.pk %}">{{ customer.name }}</a>
+            <a href="{% url 'customer-update' customer.id %}" class="btn btn-secondary btn-sm">Edit</a>
+            <a href="{% url 'customer-delete' customer.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %} {% endcomment %}
+

@@ -1,0 +1,20 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Customer Details</h2>
+    <hr>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ customer.name }}</h5>
+            <p class="card-text">
+                <strong>Address:</strong> {{ customer.address }}<br>
+                <strong>Email:</strong> {{ customer.email }}<br>
+                <strong>Phone:</strong> {{ customer.phone }}
+            </p>
+        </div>
+    </div>
+    <a href="{% url 'customer-update' customer.pk %}" class="btn btn-primary">Edit Customer</a>
+    <a href="{% url 'customer-list' %}" class="btn btn-secondary">Back to Customer List</a>
+</div>
+{% endblock %}

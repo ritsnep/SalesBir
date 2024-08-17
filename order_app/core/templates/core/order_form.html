@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if object %}Update Order{% else %}Create Order{% endif %}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <h3>Order Items</h3>
+        {{ items.management_form }}
+        {% for formset in items.forms %}
+        <div class="form-row">
+            {{ formset.as_p }}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success mt-3">Save Order</button>
+    </form>
+</div>
+{% endblock %}

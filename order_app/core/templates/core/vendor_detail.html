@@ -1,0 +1,20 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Vendor Details</h2>
+    <hr>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ vendor.name }}</h5>
+            <p class="card-text">
+                <strong>Address:</strong> {{ vendor.address }}<br>
+                <strong>Email:</strong> {{ vendor.email }}<br>
+                <strong>Phone:</strong> {{ vendor.phone }}
+            </p>
+        </div>
+    </div>
+    <a href="{% url 'vendor-update' vendor.pk %}" class="btn btn-primary">Edit Vendor</a>
+    <a href="{% url 'vendor-list' %}" class="btn btn-secondary">Back to Vendor List</a>
+</div>
+{% endblock %}

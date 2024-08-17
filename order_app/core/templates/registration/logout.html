@@ -1,0 +1,10 @@
+<!-- core/templates/registration/logged_out.html -->
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>You have been logged out</h2>
+    <p><a href="{% url 'login' %}">Login again</a></p>
+</div>
+{% endblock %}
